@@ -36,7 +36,8 @@ var ListContainer = React.createClass({
 	    return (
 		  <div className="col-sm-6">
 		    <div className="col-sm-12" style={styles.container}>
-		    	
+
+	
 		      <h3 className="text-center">{this.props.title}</h3>
 		      <AddItem add={this.handleAddItem} />
 		      <List items={this.state.list} remove={this.handleRemoveItem} />
@@ -44,7 +45,6 @@ var ListContainer = React.createClass({
 		  </div>
 	    )
 	  }
-
 });
 
 module.exports = ListContainer;

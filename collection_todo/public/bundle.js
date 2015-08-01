@@ -62,7 +62,6 @@
 		},
 
 
-
 		render: function() {
 			var componentList = this.state.lists.map(function (item, index) {
 				return React.createElement(ListContainer, {title: item.newTitle, key: index})
@@ -20501,6 +20500,8 @@
 		    return (
 			  React.createElement("div", {className: "col-sm-6"}, 
 			    React.createElement("div", {className: "col-sm-12", style: styles.container}, 
+
+		
 			      React.createElement("h3", {className: "text-center"}, this.props.title), 
 			      React.createElement(AddItem, {add: this.handleAddItem}), 
 			      React.createElement(List, {items: this.state.list, remove: this.handleRemoveItem})
@@ -20508,7 +20509,6 @@
 			  )
 		    )
 		  }
-
 	});
 
 	module.exports = ListContainer;

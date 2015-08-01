@@ -16,7 +16,6 @@ var App = React.createClass({
 	},
 
 
-
 	render: function() {
 		var componentList = this.state.lists.map(function (item, index) {
 			return <ListContainer title={item.newTitle} key={index} />
