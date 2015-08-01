@@ -57,15 +57,23 @@
 
 		addNewList: function (newList) {
 			this.setState ({
-				lists: this.state.lists.concat([{newTitle: newList.listName, index: this.state.lists.length}])
+				lists: this.state.lists.concat([{newTitle: newList.listName, index_position: this.state.lists.length}])
 			});
 		},
 
+		handleRemoveList: function (index) {
+			var newLists = this.state.lists;
+			newLists.splice(index, 1);
+			this.setState ({
+				lists: newLists,
+			})
+		},
 
 		render: function() {
 			var componentList = this.state.lists.map(function (item, index) {
-				return React.createElement(ListContainer, {title: item.newTitle, key: index})
+				return React.createElement(ListContainer, {title: item.newTitle, key: item.index_position, index: index, remove: this.handleRemoveList})
 			}.bind(this));
+
 
 			return (
 				React.createElement("div", {className: "container"}, 
@@ -20495,16 +20503,29 @@
 			    marginTop: 10,
 			    marginBottom: 10,
 			    borderRadius: 5
-			  }
+			  },
+			  removeItem: {
+			    fontSize: 20,
+			    float: "left",
+			    position: "absolute",
+			    top: 12,
+			    left: 6,
+			    cursor: "pointer",
+			    color: "rgb(222, 79, 79)"
+			  },
 			};
 		    return (
 			  React.createElement("div", {className: "col-sm-6"}, 
 			    React.createElement("div", {className: "col-sm-12", style: styles.container}, 
 
-		
-			      React.createElement("h3", {className: "text-center"}, this.props.title), 
-			      React.createElement(AddItem, {add: this.handleAddItem}), 
-			      React.createElement(List, {items: this.state.list, remove: this.handleRemoveItem})
+				    React.createElement("span", {className: "glyphicon glyphicon-remove", 
+				     style: styles.removeItem, 
+				     onClick: this.props.remove}
+				    ), 
+			
+				    React.createElement("h3", {className: "text-center"}, this.props.title, " : ", this.props.index), 
+				    React.createElement(AddItem, {add: this.handleAddItem}), 
+				    React.createElement(List, {items: this.state.list, remove: this.handleRemoveItem})
 			    )
 			  )
 		    )
