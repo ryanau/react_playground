@@ -2,6 +2,7 @@ var React = require('react');
 var ListContainer = require('./ListContainer');
 var AddList = require('./AddList');
 
+
 var App = React.createClass({
 	getInitialState: function () {
 		return {
@@ -11,7 +12,7 @@ var App = React.createClass({
 
 	addNewList: function (newList) {
 		this.setState ({
-			lists: this.state.lists.concat([{newTitle: newList.listName, index_position: this.state.lists.length}])
+			lists: this.state.lists.concat([{newTitle: newList.listName, index: this.state.lists.length, bg: newList.listColor}])
 		});
 	},
 
@@ -25,9 +26,8 @@ var App = React.createClass({
 
 	render: function() {
 		var componentList = this.state.lists.map(function (item, index) {
-			return <ListContainer title={item.newTitle} key={item.index_position} index={index} remove={this.handleRemoveList} />
+			return <ListContainer title={item.newTitle} key={item.index} index={index} remove={this.handleRemoveList} bgColor={item.bg} />
 		}.bind(this));
-
 
 		return (
 			<div className="container">

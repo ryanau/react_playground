@@ -30,7 +30,8 @@ var ListContainer = React.createClass({
 		    border: "1px solid rgb(208, 208, 208)",
 		    marginTop: 10,
 		    marginBottom: 10,
-		    borderRadius: 5
+		    borderRadius: 5,
+		    background: this.props.bgColor,
 		  },
 		  removeItem: {
 		    fontSize: 20,
